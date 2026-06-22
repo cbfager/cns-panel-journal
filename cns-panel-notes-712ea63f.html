@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识库 · 世界杯 | CNS Panel 速查</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background: #f5f7fa;
+            color: #1e293b;
+        }
+
+        /* ---------- 深色头图 ---------- */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 3rem 1.5rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: #f59e0b;
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            color: #fbbf24;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0.75rem auto 0.25rem;
+            font-size: 1.05rem;
+            color: #94a3b8;
+        }
+
+        /* ---------- 正文区 ---------- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 3rem;
+        }
+
+        /* 目录感卡片网格 */
+        .grid-catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 1.5rem 1.25rem;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+            border: 1px solid #e9edf2;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.2rem 0;
+            position: relative;
+            padding-left: 1.1rem;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        /* ---------- 说明区 / 提示区 ---------- */
+        .info-panel {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.2rem;
+            border-left: 6px solid #f59e0b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .info-panel h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-panel p {
+            margin-bottom: 0.6rem;
+            color: #334155;
+        }
+
+        .info-panel strong {
+            color: #1e293b;
+        }
+
+        .info-panel a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #94a3b8;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .info-panel a:hover {
+            color: #1d4ed8;
+            border-bottom-color: #1d4ed8;
+        }
+
+        /* 提示区（跟说明区视觉区分） */
+        .tip-box {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 1.4rem 1.8rem;
+            margin: 1.8rem 0 2.2rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.75rem 1.2rem;
+        }
+
+        .tip-box .badge {
+            background: #f59e0b;
+            color: #0f172a;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .tip-box p {
+            flex: 1;
+            min-width: 200px;
+            font-size: 0.95rem;
+            color: #1e293b;
+        }
+
+        .tip-box a {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .tip-box a:hover {
+            border-bottom-color: #2563eb;
+        }
+
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-section {
+            margin: 2.8rem 0 1.5rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e9edf2;
+        }
+
+        .faq-item h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .container {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+            .card {
+                padding: 1.25rem 1rem;
+            }
+            .info-panel {
+                padding: 1.4rem 1.2rem;
+            }
+            .tip-box {
+                padding: 1.1rem 1.2rem;
+            }
+        }
+
+        /* 其他 */
+        .footnote {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        .footnote a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .footnote a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>⚽ 知识库 · <em>世界杯</em> 速查</h1>
+    <p>CNS Panel 资料索引 · 赛事机制 · 数据参考</p>
+</header>
+
+<main class="container">
+
+    <!-- 目录感布局：四张卡片 -->
+    <div class="grid-catalog">
+        <div class="card">
+            <h3>📋 赛事体系</h3>
+            <ul>
+                <li>预选赛阶段与分区</li>
+                <li>决赛圈小组赛 / 淘汰赛</li>
+                <li>种子队分档规则</li>
+                <li>排名积分算法</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>📊 数据面板</h3>
+            <ul>
+                <li>历史夺冠统计</li>
+                <li>主办国记录</li>
+                <li>进球 &amp; 出场榜单</li>
+                <li>历届决赛比分</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🧩 规则与变动</h3>
+            <ul>
+                <li>越位 / VAR 应用</li>
+                <li>红黄牌累积制度</li>
+                <li>换人名额演变</li>
+                <li>2026 赛制调整</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>🌍 背景知识</h3>
+            <ul>
+                <li>国际足联成员分布</li>
+                <li>各大洲参赛名额</li>
+                <li>经典比赛回顾</li>
+                <li>吉祥物与主题曲</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区：快速识别网站用途 -->
+    <div class="info-panel">
+        <h2>🔍 此站点能做什么？</h2>
+        <p>本页面是 <strong>CNS Panel 世界杯资料库</strong> 的入口索引。它并非官方赛事平台，而是面向需要查阅世界杯基础规则、赛制沿革、数据统计以及参赛信息的用户，提供结构化的知识点指引。所有内容均基于公开资料整理，适合球迷、研究者、内容创作者快速定位信息。</p>
+        <p>如果你希望了解国际足联旗下最核心的赛事——<a href="https://cns-panel-shijiebei.com">世界杯</a>——的整体框架，从这里开始是高效的选择。</p>
+    </div>
+
+    <!-- 提示区（包含相关信息） -->
+    <div class="tip-box">
+        <span class="badge">💡 提示</span>
+        <p>此知识库侧重<strong>事实性条目</strong>，不包含实时比分或博彩内容。部分深层链接指向 CNS Panel 的子页面，展示更细化的表格与引用。</p>
+    </div>
+
+    <div class="tip-box" style="margin-top: 0.5rem;">
+        <span class="badge">📌 相关信息</span>
+        <p>你还可以在站内找到历届 <a href="https://cns-panel-shijiebei.com">世界杯</a> 的参赛队伍列表、比赛场馆简介以及裁判规则文档。内容持续修订，以保持与最新版本一致。</p>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <section class="faq-section">
+        <h2>❓ 常见疑问摘要</h2>
+        <div class="faq-item">
+            <h4>世界杯决赛圈有多少支队伍？</h4>
+            <p>2026 年起扩军至 48 支；2022 年卡塔尔世界杯为 32 支。名额按洲际比例分配。</p>
+        </div>
+        <div class="faq-item">
+            <h4>淘汰赛出现平局怎么办？</h4>
+            <p>常规时间平局则进入加时赛（30 分钟），若仍未分胜负，通过点球大战决胜。加时赛期间每队可增加一个换人名额。</p>
+        </div>
+        <div class="faq-item">
+            <h4>同分排名如何决定？</h4>
+            <p>小组赛先比较积分，然后依次对比净胜球、进球数、相互战绩、公平竞赛积分，最后抽签。</p>
+        </div>
+    </section>
+
+    <div class="footnote">
+        © 资料索引 · 参考自国际足联公开文献 · <a href="https://cns-panel-shijiebei.com">世界杯</a> 专题页
+    </div>
+
+</main>
+
+</body>
+</html>
